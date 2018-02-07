@@ -1,0 +1,50 @@
+server:
+    port: 18070
+
+# Temporary fix for /refresh when updating external configs
+# remove this once the oauth is configured properly
+# This removes all authentication to actuator endpoints
+management:
+    security:
+        enabled: false
+    context-path: /admin
+    # Remove x-application-context on header reponse
+    add-application-context-header: false
+
+# Eureka server configurations
+eureka:
+    instance:
+        hostname: localhost
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
+        enableSelfPreservation: false
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+            
+# Actuator settings, enables restart, shutdown URLs
+# endpoints:
+#     restart:
+#         enabled: true
+#     shutdown:
+#         enabled: true
+
+message: "Eureka server"
+
+---
+
+spring:
+    profiles: docker
+eureka:
+    instance:
+        hostname: eureka-server
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
+        enableSelfPreservation: false
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+        serviceUrl:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
