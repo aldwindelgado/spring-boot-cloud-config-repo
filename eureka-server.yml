@@ -1,5 +1,5 @@
 server:
-    port: 18070
+    port: 8070
 
 # Temporary fix for /refresh when updating external configs
 # remove this once the oauth is configured properly
@@ -32,19 +32,3 @@ eureka:
 #         enabled: true
 
 message: "Eureka server"
-
----
-
-spring:
-    profiles: docker
-eureka:
-    instance:
-        hostname: eureka-server
-    server:
-        waitTimeInMsWhenSyncEmpty: 0
-        enableSelfPreservation: false
-    client:
-        registerWithEureka: false
-        fetchRegistry: false
-        serviceUrl:
-            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
