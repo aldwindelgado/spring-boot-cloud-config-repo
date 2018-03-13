@@ -1,2 +1,12 @@
 server:
     port: 13050
+
+management:
+
+    # This removes all authentication to actuator endpoints
+    security:
+        enabled: false
+    # Updates actuator endpoints to /admin/mappings** etc. instead of /mappings
+    context-path: /admin
+    # Remove x-application-context on header reponse
+    add-application-context-header: false
