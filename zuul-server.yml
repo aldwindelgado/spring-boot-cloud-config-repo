@@ -6,7 +6,7 @@ spring:
     aop:
         proxy-target-class: true
     zipkin:
-        baseUrl: http://localhost:3050/
+        baseUrl: http://localhost:13050/
     sleuth:
         sampler:
 # Generally the tracing data volume can be quite high; so we can tell Spring sleuth to
@@ -50,9 +50,9 @@ zuul:
             stripPrefix: false
 #            url: http://localhost:8072/ # only applicable if you don't have EUREKA SERVER
 
-gateway:
-    serviceName: zuul-server
-    servicePort: 19000
+registry:
+    serviceName: localhost
+    servicePort: 18070
 
 # Eureka Configs
 eureka:
@@ -62,7 +62,7 @@ eureka:
         leaseExpirationDurationInSeconds: 5
     client:
         serviceUrl:
-            defaultZone: http://${gateway.serviceName}:${gateway.servicePort}/eureka/
+            defaultZone: http://${registry.serviceName}:${registry.servicePort}/eureka/
         healthcheck:
             enabled: true
         lease:

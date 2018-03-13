@@ -1,11 +1,11 @@
 spring:
     profiles: docker
     zipkin:
-        baseUrl: http://zipkin-server:13050/
+        baseUrl: http://adgs-zipkin-server:13050/
 
-gateway:
-    serviceName: zuul-server
-    servicePort: 19000
+registry:
+    serviceName: adgs-eureka-server
+    servicePort: 18070
 
 sample:
     message: 'Im Zuul on Docker'
@@ -19,7 +19,7 @@ eureka:
         leaseExpirationDurationInSeconds: 5
     client:
         serviceUrl:
-            defaultZone: http://${gateway.serviceName}:${gateway.servicePort}/eureka/
+            defaultZone: http://${registry.serviceName}:${registry.servicePort}/eureka/
         healthcheck:
             enabled: true
         lease:
