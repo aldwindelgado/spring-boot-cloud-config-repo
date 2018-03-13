@@ -23,7 +23,7 @@ sample:
     message: 'Im Zuul'
 
 server:
-    port: 9000
+    port: 19000
 
 management:
     # Remove x-application-context on header reponse
@@ -52,7 +52,7 @@ zuul:
 
 gateway:
     serviceName: zuul-server
-    servicePort: 7001
+    servicePort: 19000
 
 # Eureka Configs
 eureka:

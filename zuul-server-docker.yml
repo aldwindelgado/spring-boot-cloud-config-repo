@@ -5,7 +5,7 @@ spring:
 
 gateway:
     serviceName: zuul-server
-    servicePort: 7001
+    servicePort: 19000
 
 sample:
     message: 'Im Zuul on Docker'
