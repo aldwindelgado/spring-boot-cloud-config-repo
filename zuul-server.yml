@@ -25,7 +25,14 @@ sample:
 server:
     port: 19000
 
+# Temporary fix for /refresh when updating external configs
+# remove this once the oauth is configured properly
 management:
+
+    # This removes all authentication to actuator endpoints
+    security:
+        enabled: false
+    # Updates actuator endpoints to /admin/mappings** etc. instead of /mappings
     context-path: /admin
     # Remove x-application-context on header reponse
     add-application-context-header: false
