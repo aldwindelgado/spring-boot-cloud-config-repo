@@ -26,6 +26,7 @@ server:
     port: 19000
 
 management:
+    context-path: /admin
     # Remove x-application-context on header reponse
     add-application-context-header: false
 
